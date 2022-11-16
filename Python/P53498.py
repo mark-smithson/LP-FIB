@@ -3,17 +3,28 @@ class Tree:
         self.rt = x
         self.child = []
 
-    def add_child(self, a):
+    def addChild(self, a):
         self.child.append(a)
 
     def root(self):
         return self.rt
 
-    def ith_child(self, ith):
+    def ithChild(self, ith):
         return self.child[ith]
 
     def num_children(self):
         return len(self.child)
+
+    def __iter__(self):
+        yield self.rt
+        rec = self.child
+
+        for ch in rec:
+            #amplitude
+            for sub_ch in range(0, ch.num_children()):
+                rec.append(ch.ithChild(sub_ch))
+
+            yield ch.root()
 
 class Pre(Tree):
     def preorder(self):
@@ -22,4 +33,3 @@ class Pre(Tree):
             preorderList = preorderList + (ch.preorder())
 
         return [self.rt] + preorderList
-
