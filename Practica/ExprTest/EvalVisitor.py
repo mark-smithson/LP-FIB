@@ -5,7 +5,6 @@ else:
     from ExprParser import ExprParser
     from ExprVisitor import ExprVisitor
 
-
 def sum(x, y):
     return x + y
 
@@ -30,19 +29,18 @@ ops = {'+': sum, '-': sub,
        '*': mult, '/': div, '^': exp}
 
 
-class TreeVisitor(ExprVisitor):
-    def __init__(self):
-        self.nivell = 0
 
+class EvalVisitor(ExprVisitor):
+    def visitRoot(self, ctx):
+        l = list(ctx.getChildren())
+        print(self.visit(l[0]))
     def visitExpr(self, ctx):
         l = list(ctx.getChildren())
         if len(l) == 1:
-            print("  " * self.nivell +
-                  ExprParser.symbolicNames[l[0].getSymbol().type] +
-                  '(' + l[0].getText() + ')')
+            return int(l[0].getText())
         else:  # len(l) == 3
-            print('  ' * self.nivell + ExprParser.symbolicNames[l[1].getSymbol().type] + ' ' + l[1].getText())
-            self.nivell += 1
-            self.visit(l[0])
-            self.visit(l[2])
-            self.nivell -= 1
+            if len(l) == 2:
+                return self.visit(l[0])
+            else:
+                return ops[l[1].getText()](self.visit(l[0]),
+                                               self.visit(l[2]))
