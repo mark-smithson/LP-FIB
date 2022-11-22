@@ -19,5 +19,10 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#cond.
+    def visitCond(self, ctx:ExprParser.CondContext):
+        return self.visitChildren(ctx)
+
+
 
 del ExprParser
