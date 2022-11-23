@@ -6,43 +6,100 @@ else:
     from ExprVisitor import ExprVisitor
 
 
-def sum(x, y):
-    return x + y
-
-
-def sub(x, y):
-    return x - y
-
-
-def mult(x, y):
-    return x * y
-
-
-def div(x, y):
-    return x / y
-
-
-def exp(x, y):
-    return x ** y
-
-
-ops = {'+': sum, '-': sub,
-       '*': mult, '/': div, '^': exp}
-
-
 class TreeVisitor(ExprVisitor):
     def __init__(self):
         self.nivell = 0
 
-    def visitExpr(self, ctx):
+    def visitWrite(self, ctx:ExprParser.WriteContext):
         l = list(ctx.getChildren())
-        if len(l) == 1:
-            print("  " * self.nivell +
-                  ExprParser.symbolicNames[l[0].getSymbol().type] +
-                  '(' + l[0].getText() + ')')
-        else:  # len(l) == 3
-            print('  ' * self.nivell + ExprParser.symbolicNames[l[1].getSymbol().type] + ' ' + l[1].getText())
-            self.nivell += 1
-            self.visit(l[0])
-            self.visit(l[2])
-            self.nivell -= 1
+
+        print('  ' * self.nivell + 'WRITE -> ' + l[1].getText())
+        self.nivell += 1
+        self.visit(l[1])
+        self.nivell -= 1
+
+    def visitDiv(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'DIV(/)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+
+    def visitMod(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'MOD(%)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+
+    # Visit a parse tree produced by ExprParser#Sub.
+    def visitSub(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'SUB(-)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+
+    # Visit a parse tree produced by ExprParser#Mult.
+    def visitMult(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'MULT(*)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+
+    def visitVar(self, ctx):
+        l = list(ctx.getChildren())
+        print("  " * self.nivell +
+              ExprParser.symbolicNames[l[0].getSymbol().type] +
+              '(' + l[0].getText() + ')')
+
+    # Visit a parse tree produced by ExprParser#Value.
+    def visitValue(self, ctx):
+        l = list(ctx.getChildren())
+        print("  " * self.nivell +
+              ExprParser.symbolicNames[l[0].getSymbol().type] +
+              '(' + l[0].getText() + ')')
+
+
+    # Visit a parse tree produced by ExprParser#Sum.
+    def visitSum(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'SUM(+)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+
+    # Visit a parse tree produced by ExprParser#Exp.
+    def visitExp(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'EXP(^)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    def visitAssi(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'ASSIGN(<-)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1

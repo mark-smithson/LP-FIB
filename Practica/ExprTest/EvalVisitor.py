@@ -5,42 +5,71 @@ else:
     from ExprParser import ExprParser
     from ExprVisitor import ExprVisitor
 
-def sum(x, y):
-    return x + y
-
-
-def sub(x, y):
-    return x - y
-
-
-def mult(x, y):
-    return x * y
-
-
-def div(x, y):
-    return x / y
-
-
-def exp(x, y):
-    return x ** y
-
-
-ops = {'+': sum, '-': sub,
-       '*': mult, '/': div, '^': exp}
-
-
-
 class EvalVisitor(ExprVisitor):
+
+    symtable = {}
     def visitRoot(self, ctx):
         l = list(ctx.getChildren())
         print(self.visit(l[0]))
-    def visitExpr(self, ctx):
+
+
+    def visitWrite(self, ctx):
         l = list(ctx.getChildren())
-        if len(l) == 1:
-            return int(l[0].getText())
-        else:  # len(l) == 3
-            if len(l) == 2:
-                return self.visit(l[0])
-            else:
-                return ops[l[1].getText()](self.visit(l[0]),
-                                               self.visit(l[2]))
+        print(self.symtable[l[1].getText()])
+
+    def visitDiv(self, ctx):
+        l = list(ctx.getChildren())
+
+        if l[2] == 0:
+            raise Exception("Math error: Attempted to divide by Zero")
+        else:
+            return self.visit(l[0])/self.visit(l[2])
+
+
+    def visitMod(self, ctx):
+        l = list(ctx.getChildren())
+
+        if l[2] == 0:
+            raise Exception("Math error: Attempted to divide by Zero")
+        else:
+            return self.visit(l[0])%self.visit(l[2])
+
+
+    # Visit a parse tree produced by ExprParser#Sub.
+    def visitSub(self, ctx):
+        l = list(ctx.getChildren())
+
+        return self.visit(l[0]) - self.visit(l[2])
+
+
+    # Visit a parse tree produced by ExprParser#Mult.
+    def visitMult(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0])*self.visit(l[2])
+
+    def visitVar(self, ctx):
+        l = list(ctx.getChildren())
+        return self.symtable[l[0].getText()]
+
+    # Visit a parse tree produced by ExprParser#Value.
+    def visitValue(self, ctx):
+        l = list(ctx.getChildren())
+        return int(l[0].getText())
+
+
+    # Visit a parse tree produced by ExprParser#Sum.
+    def visitSum(self, ctx):
+        l = list(ctx.getChildren())
+
+        return self.visit(l[0]) + self.visit(l[2])
+
+
+    # Visit a parse tree produced by ExprParser#Exp.
+    def visitExp(self, ctx):
+        l = list(ctx.getChildren())
+
+        return self.visit(l[0])**self.visit(l[2])
+
+    def visitAssi(self, ctx):
+        l = list(ctx.getChildren())
+        self.symtable[l[0].getText()] = self.visit(l[2])
