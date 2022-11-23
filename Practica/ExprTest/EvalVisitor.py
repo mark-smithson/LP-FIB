@@ -15,7 +15,7 @@ class EvalVisitor(ExprVisitor):
 
     def visitWrite(self, ctx):
         l = list(ctx.getChildren())
-        print(self.symtable[l[1].getText()])
+        print(self.visit(l[1]))
 
     def visitDiv(self, ctx):
         l = list(ctx.getChildren())
