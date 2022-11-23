@@ -23,6 +23,13 @@ class EvalVisitor(ExprVisitor):
         if self.visit(l[1]):
             return self.visit(l[3])
 
+    def visitIfelsest(self, ctx):
+        l = list(ctx.getChildren())
+        if self.visit(l[1]):
+            return self.visit(l[3])
+        else:
+            return self.visit(l[7])
+
     def visitDiv(self, ctx):
         l = list(ctx.getChildren())
 
