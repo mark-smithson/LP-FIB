@@ -1,0 +1,5 @@
+all:
+	antlr4 -Dlanguage=Python3 -no-listener -visitor Funx.g
+
+tree:
+	antlr4 -Dlanguage=Python3 -no-listener -visitor Expr.g

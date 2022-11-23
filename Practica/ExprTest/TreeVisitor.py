@@ -103,3 +103,63 @@ class TreeVisitor(ExprVisitor):
         self.visit(l[0])
         self.visit(l[2])
         self.nivell -= 1
+
+    def visitLt(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'LT(<)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    # Visit a parse tree produced by ExprParser#Gt.
+    def visitGt(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'GT(>)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    # Visit a parse tree produced by ExprParser#Ge.
+    def visitGe(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'GE(>=)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    # Visit a parse tree produced by ExprParser#Le.
+    def visitLe(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'LE(<=)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    # Visit a parse tree produced by ExprParser#Eq.
+    def visitEq(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'EQ(=)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+
+    # Visit a parse tree produced by ExprParser#Neq.
+    def visitNeq(self, ctx):
+        l = list(ctx.getChildren())
+
+        print('  ' * self.nivell + 'NEQ(!=)')
+        self.nivell += 1
+        self.visit(l[0])
+        self.visit(l[2])
+        self.nivell -= 1
+

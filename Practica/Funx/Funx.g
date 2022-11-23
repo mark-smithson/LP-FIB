@@ -1,4 +1,4 @@
-grammar Expr;
+grammar Funx;
 
 root : block EOF ;
 
@@ -8,9 +8,7 @@ instr : assign
     | statement
     ;
 
-statement : WRITE expr # Write
-    | IF condition KEYL block KEYR # Ifst
-    ;
+statement: WRITE expr # Write;
 
 expr : <assoc=right> expr EXP expr # Exp
     | expr MULT expr # Mult
@@ -23,13 +21,7 @@ expr : <assoc=right> expr EXP expr # Exp
     ;
 
 assign : IDVAR ASSIGN expr # Assi ;
-condition : expr LT expr # Lt
-    | expr GT expr # Gt
-    | expr GE expr # Ge
-    | expr LE expr # Le
-    | expr EQ expr # Eq
-    | expr NEQ expr # Neq
-    ;
+
 
 NUM : [0-9]+ ;
 SUM : '+' ;
@@ -45,9 +37,6 @@ LT: '<' ;
 GT: '>' ;
 GE: '>=' ;
 LE: '<=' ;
-IF: 'if' ;
-KEYL : '{' ;
-KEYR : '}' ;
 WRITE : 'write' ;
 IDVAR : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')* ;
 WS : [ \n]+ -> skip ;

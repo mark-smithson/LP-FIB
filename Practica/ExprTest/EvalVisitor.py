@@ -18,6 +18,11 @@ class EvalVisitor(ExprVisitor):
         l = list(ctx.getChildren())
         print(self.visit(l[1]))
 
+    def visitIfst(self, ctx):
+        l = list(ctx.getChildren())
+        if self.visit(l[1]):
+            return self.visit(l[3])
+
     def visitDiv(self, ctx):
         l = list(ctx.getChildren())
 
@@ -37,7 +42,6 @@ class EvalVisitor(ExprVisitor):
     # Visit a parse tree produced by ExprParser#Sub.
     def visitSub(self, ctx):
         l = list(ctx.getChildren())
-
         return self.visit(l[0]) - self.visit(l[2])
 
     # Visit a parse tree produced by ExprParser#Mult.
@@ -67,3 +71,32 @@ class EvalVisitor(ExprVisitor):
     def visitAssi(self, ctx):
         l = list(ctx.getChildren())
         self.symtable[l[0].getText()] = self.visit(l[2])
+
+    def visitLt(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) < self.visit(l[2])
+
+    # Visit a parse tree produced by ExprParser#Gt.
+    def visitGt(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) > self.visit(l[2])
+
+    # Visit a parse tree produced by ExprParser#Ge.
+    def visitGe(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) >= self.visit(l[2])
+
+    # Visit a parse tree produced by ExprParser#Le.
+    def visitLe(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) <= self.visit(l[2])
+
+    # Visit a parse tree produced by ExprParser#Eq.
+    def visitEq(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) == self.visit(l[2])
+
+    # Visit a parse tree produced by ExprParser#Neq.
+    def visitNeq(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0]) != self.visit(l[2])
