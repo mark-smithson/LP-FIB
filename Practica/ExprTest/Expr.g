@@ -11,6 +11,7 @@ instr : assign
 statement : WRITE expr # Write
     | IF condition KEYL block KEYR # Ifst
     | IF condition KEYL block KEYR ELSE KEYL block KEYR # Ifelsest
+    | WHILE condition KEYL block KEYR # While
     ;
 
 expr : <assoc=right> expr EXP expr # Exp
@@ -47,6 +48,7 @@ GT: '>' ;
 GE: '>=' ;
 LE: '<=' ;
 IF: 'if' ;
+WHILE: 'while' ;
 ELSE : 'else' ;
 KEYL : '{' ;
 KEYR : '}' ;

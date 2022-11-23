@@ -18,6 +18,11 @@ class EvalVisitor(ExprVisitor):
         l = list(ctx.getChildren())
         print(self.visit(l[1]))
 
+    def visitWhile(self, ctx):
+        l = list(ctx.getChildren())
+        while (self.visit(l[1])):
+            self.visit(l[3])
+
     def visitIfst(self, ctx):
         l = list(ctx.getChildren())
         if self.visit(l[1]):

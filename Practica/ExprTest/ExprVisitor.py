@@ -39,6 +39,11 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#While.
+    def visitWhile(self, ctx:ExprParser.WhileContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExprParser#Div.
     def visitDiv(self, ctx:ExprParser.DivContext):
         return self.visitChildren(ctx)
