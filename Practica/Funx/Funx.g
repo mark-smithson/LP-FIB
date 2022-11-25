@@ -6,11 +6,25 @@ block: instr* ;
 
 instr : assign
     | statement
+    | createFunction
+    | invokeFunction
+    | expr
     ;
 
-statement: WRITE expr # Write;
+createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
+invokeFunction : IDFUNC paramsInvokeFunction # InvFunc;
 
-expr : <assoc=right> expr EXP expr # Exp
+paramsCreateFunction : IDVAR* # ParamsCreateFunc;
+paramsInvokeFunction : expr* # ParamsInvFunc;
+
+statement : WRITE expr # Write
+    | IF condition KEYL block KEYR # Ifst
+    | IF condition KEYL block KEYR ELSE KEYL block KEYR # Ifelsest
+    | WHILE condition KEYL block KEYR # While
+    ;
+
+expr : LP expr RP # ParentExp
+    |<assoc=right> expr EXP expr # Exp
     | expr MULT expr # Mult
     | expr DIV expr # Div
     | expr MOD expr # Mod
@@ -18,10 +32,17 @@ expr : <assoc=right> expr EXP expr # Exp
     | expr SUB expr # Sub
     | NUM # Value
     | IDVAR # Var
+    | IDFUNC # VarFunc
     ;
 
 assign : IDVAR ASSIGN expr # Assi ;
-
+condition : expr LT expr # Lt
+    | expr GT expr # Gt
+    | expr GE expr # Ge
+    | expr LE expr # Le
+    | expr EQ expr # Eq
+    | expr NEQ expr # Neq
+    ;
 
 NUM : [0-9]+ ;
 SUM : '+' ;
@@ -37,6 +58,14 @@ LT: '<' ;
 GT: '>' ;
 GE: '>=' ;
 LE: '<=' ;
+IF: 'if' ;
+WHILE: 'while' ;
+ELSE : 'else' ;
+KEYL : '{' ;
+KEYR : '}' ;
+LP : '(' ;
+RP : ')' ;
 WRITE : 'write' ;
-IDVAR : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')* ;
+IDVAR : [a-z][a-zA-Z0-9]* ;
+IDFUNC : [A-Z][a-zA-Z0-9]* ;
 WS : [ \n]+ -> skip ;

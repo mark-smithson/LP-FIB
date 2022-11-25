@@ -1,12 +1,12 @@
 if __name__ is not None and "." in __name__:
-    from .ExprParser import ExprParser
-    from .ExprVisitor import ExprVisitor
+    from .FunxParser import FunxParser
+    from .FunxVisitor import FunxVisitor
 else:
-    from ExprParser import ExprParser
-    from ExprVisitor import ExprVisitor
+    from .FunxParser import FunxParser
+    from .FunxVisitor import FunxVisitor
 
 
-class EvalVisitor(ExprVisitor):
+class TreeVisitor(FunxVisitor):
 
     symtable = [{}]
     functable = {}

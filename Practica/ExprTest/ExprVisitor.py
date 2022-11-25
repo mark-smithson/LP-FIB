@@ -109,6 +109,11 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#VarFunc.
+    def visitVarFunc(self, ctx:ExprParser.VarFuncContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExprParser#Assi.
     def visitAssi(self, ctx:ExprParser.AssiContext):
         return self.visitChildren(ctx)

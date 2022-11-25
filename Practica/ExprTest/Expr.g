@@ -32,6 +32,7 @@ expr : LP expr RP # ParentExp
     | expr SUB expr # Sub
     | NUM # Value
     | IDVAR # Var
+    | IDFUNC # VarFunc
     ;
 
 assign : IDVAR ASSIGN expr # Assi ;

@@ -1,4 +1,4 @@
-# Generated from Expr.g by ANTLR 4.11.1
+# Generated from Funx.g by ANTLR 4.11.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -62,9 +62,9 @@ def serializedATN():
         146
     ]
 
-class ExprParser ( Parser ):
+class FunxParser ( Parser ):
 
-    grammarFileName = "Expr.g"
+    grammarFileName = "Funx.g"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -142,14 +142,14 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def block(self):
-            return self.getTypedRuleContext(ExprParser.BlockContext,0)
+            return self.getTypedRuleContext(FunxParser.BlockContext,0)
 
 
         def EOF(self):
-            return self.getToken(ExprParser.EOF, 0)
+            return self.getToken(FunxParser.EOF, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_root
+            return FunxParser.RULE_root
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRoot" ):
@@ -162,14 +162,14 @@ class ExprParser ( Parser ):
 
     def root(self):
 
-        localctx = ExprParser.RootContext(self, self._ctx, self.state)
+        localctx = FunxParser.RootContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_root)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 22
             self.block()
             self.state = 23
-            self.match(ExprParser.EOF)
+            self.match(FunxParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -188,13 +188,13 @@ class ExprParser ( Parser ):
 
         def instr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.InstrContext)
+                return self.getTypedRuleContexts(FunxParser.InstrContext)
             else:
-                return self.getTypedRuleContext(ExprParser.InstrContext,i)
+                return self.getTypedRuleContext(FunxParser.InstrContext,i)
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_block
+            return FunxParser.RULE_block
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBlock" ):
@@ -207,7 +207,7 @@ class ExprParser ( Parser ):
 
     def block(self):
 
-        localctx = ExprParser.BlockContext(self, self._ctx, self.state)
+        localctx = FunxParser.BlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_block)
         self._la = 0 # Token type
         try:
@@ -239,27 +239,27 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def assign(self):
-            return self.getTypedRuleContext(ExprParser.AssignContext,0)
+            return self.getTypedRuleContext(FunxParser.AssignContext,0)
 
 
         def statement(self):
-            return self.getTypedRuleContext(ExprParser.StatementContext,0)
+            return self.getTypedRuleContext(FunxParser.StatementContext,0)
 
 
         def createFunction(self):
-            return self.getTypedRuleContext(ExprParser.CreateFunctionContext,0)
+            return self.getTypedRuleContext(FunxParser.CreateFunctionContext,0)
 
 
         def invokeFunction(self):
-            return self.getTypedRuleContext(ExprParser.InvokeFunctionContext,0)
+            return self.getTypedRuleContext(FunxParser.InvokeFunctionContext,0)
 
 
         def expr(self):
-            return self.getTypedRuleContext(ExprParser.ExprContext,0)
+            return self.getTypedRuleContext(FunxParser.ExprContext,0)
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_instr
+            return FunxParser.RULE_instr
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInstr" ):
@@ -272,7 +272,7 @@ class ExprParser ( Parser ):
 
     def instr(self):
 
-        localctx = ExprParser.InstrContext(self, self._ctx, self.state)
+        localctx = FunxParser.InstrContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_instr)
         try:
             self.state = 36
@@ -327,7 +327,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_createFunction
+            return FunxParser.RULE_createFunction
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -337,22 +337,22 @@ class ExprParser ( Parser ):
 
     class CreateFuncContext(CreateFunctionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.CreateFunctionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.CreateFunctionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDFUNC(self):
-            return self.getToken(ExprParser.IDFUNC, 0)
+            return self.getToken(FunxParser.IDFUNC, 0)
         def paramsCreateFunction(self):
-            return self.getTypedRuleContext(ExprParser.ParamsCreateFunctionContext,0)
+            return self.getTypedRuleContext(FunxParser.ParamsCreateFunctionContext,0)
 
         def KEYL(self):
-            return self.getToken(ExprParser.KEYL, 0)
+            return self.getToken(FunxParser.KEYL, 0)
         def block(self):
-            return self.getTypedRuleContext(ExprParser.BlockContext,0)
+            return self.getTypedRuleContext(FunxParser.BlockContext,0)
 
         def KEYR(self):
-            return self.getToken(ExprParser.KEYR, 0)
+            return self.getToken(FunxParser.KEYR, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCreateFunc" ):
@@ -364,21 +364,21 @@ class ExprParser ( Parser ):
 
     def createFunction(self):
 
-        localctx = ExprParser.CreateFunctionContext(self, self._ctx, self.state)
+        localctx = FunxParser.CreateFunctionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_createFunction)
         try:
-            localctx = ExprParser.CreateFuncContext(self, localctx)
+            localctx = FunxParser.CreateFuncContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 38
-            self.match(ExprParser.IDFUNC)
+            self.match(FunxParser.IDFUNC)
             self.state = 39
             self.paramsCreateFunction()
             self.state = 40
-            self.match(ExprParser.KEYL)
+            self.match(FunxParser.KEYL)
             self.state = 41
             self.block()
             self.state = 42
-            self.match(ExprParser.KEYR)
+            self.match(FunxParser.KEYR)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -397,7 +397,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_invokeFunction
+            return FunxParser.RULE_invokeFunction
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -407,14 +407,14 @@ class ExprParser ( Parser ):
 
     class InvFuncContext(InvokeFunctionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.InvokeFunctionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.InvokeFunctionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDFUNC(self):
-            return self.getToken(ExprParser.IDFUNC, 0)
+            return self.getToken(FunxParser.IDFUNC, 0)
         def paramsInvokeFunction(self):
-            return self.getTypedRuleContext(ExprParser.ParamsInvokeFunctionContext,0)
+            return self.getTypedRuleContext(FunxParser.ParamsInvokeFunctionContext,0)
 
 
         def accept(self, visitor:ParseTreeVisitor):
@@ -427,13 +427,13 @@ class ExprParser ( Parser ):
 
     def invokeFunction(self):
 
-        localctx = ExprParser.InvokeFunctionContext(self, self._ctx, self.state)
+        localctx = FunxParser.InvokeFunctionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_invokeFunction)
         try:
-            localctx = ExprParser.InvFuncContext(self, localctx)
+            localctx = FunxParser.InvFuncContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 44
-            self.match(ExprParser.IDFUNC)
+            self.match(FunxParser.IDFUNC)
             self.state = 45
             self.paramsInvokeFunction()
         except RecognitionException as re:
@@ -454,7 +454,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_paramsCreateFunction
+            return FunxParser.RULE_paramsCreateFunction
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -464,15 +464,15 @@ class ExprParser ( Parser ):
 
     class ParamsCreateFuncContext(ParamsCreateFunctionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ParamsCreateFunctionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ParamsCreateFunctionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDVAR(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.IDVAR)
+                return self.getTokens(FunxParser.IDVAR)
             else:
-                return self.getToken(ExprParser.IDVAR, i)
+                return self.getToken(FunxParser.IDVAR, i)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParamsCreateFunc" ):
@@ -484,18 +484,18 @@ class ExprParser ( Parser ):
 
     def paramsCreateFunction(self):
 
-        localctx = ExprParser.ParamsCreateFunctionContext(self, self._ctx, self.state)
+        localctx = FunxParser.ParamsCreateFunctionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_paramsCreateFunction)
         self._la = 0 # Token type
         try:
-            localctx = ExprParser.ParamsCreateFuncContext(self, localctx)
+            localctx = FunxParser.ParamsCreateFuncContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 50
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==23:
                 self.state = 47
-                self.match(ExprParser.IDVAR)
+                self.match(FunxParser.IDVAR)
                 self.state = 52
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -518,7 +518,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_paramsInvokeFunction
+            return FunxParser.RULE_paramsInvokeFunction
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -528,15 +528,15 @@ class ExprParser ( Parser ):
 
     class ParamsInvFuncContext(ParamsInvokeFunctionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ParamsInvokeFunctionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ParamsInvokeFunctionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
 
         def accept(self, visitor:ParseTreeVisitor):
@@ -549,10 +549,10 @@ class ExprParser ( Parser ):
 
     def paramsInvokeFunction(self):
 
-        localctx = ExprParser.ParamsInvokeFunctionContext(self, self._ctx, self.state)
+        localctx = FunxParser.ParamsInvokeFunctionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_paramsInvokeFunction)
         try:
-            localctx = ExprParser.ParamsInvFuncContext(self, localctx)
+            localctx = FunxParser.ParamsInvFuncContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 56
             self._errHandler.sync(self)
@@ -583,7 +583,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_statement
+            return FunxParser.RULE_statement
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -593,14 +593,14 @@ class ExprParser ( Parser ):
 
     class WriteContext(StatementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.StatementContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def WRITE(self):
-            return self.getToken(ExprParser.WRITE, 0)
+            return self.getToken(FunxParser.WRITE, 0)
         def expr(self):
-            return self.getTypedRuleContext(ExprParser.ExprContext,0)
+            return self.getTypedRuleContext(FunxParser.ExprContext,0)
 
 
         def accept(self, visitor:ParseTreeVisitor):
@@ -612,33 +612,33 @@ class ExprParser ( Parser ):
 
     class IfelsestContext(StatementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.StatementContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IF(self):
-            return self.getToken(ExprParser.IF, 0)
+            return self.getToken(FunxParser.IF, 0)
         def condition(self):
-            return self.getTypedRuleContext(ExprParser.ConditionContext,0)
+            return self.getTypedRuleContext(FunxParser.ConditionContext,0)
 
         def KEYL(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.KEYL)
+                return self.getTokens(FunxParser.KEYL)
             else:
-                return self.getToken(ExprParser.KEYL, i)
+                return self.getToken(FunxParser.KEYL, i)
         def block(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.BlockContext)
+                return self.getTypedRuleContexts(FunxParser.BlockContext)
             else:
-                return self.getTypedRuleContext(ExprParser.BlockContext,i)
+                return self.getTypedRuleContext(FunxParser.BlockContext,i)
 
         def KEYR(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.KEYR)
+                return self.getTokens(FunxParser.KEYR)
             else:
-                return self.getToken(ExprParser.KEYR, i)
+                return self.getToken(FunxParser.KEYR, i)
         def ELSE(self):
-            return self.getToken(ExprParser.ELSE, 0)
+            return self.getToken(FunxParser.ELSE, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfelsest" ):
@@ -649,22 +649,22 @@ class ExprParser ( Parser ):
 
     class WhileContext(StatementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.StatementContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def WHILE(self):
-            return self.getToken(ExprParser.WHILE, 0)
+            return self.getToken(FunxParser.WHILE, 0)
         def condition(self):
-            return self.getTypedRuleContext(ExprParser.ConditionContext,0)
+            return self.getTypedRuleContext(FunxParser.ConditionContext,0)
 
         def KEYL(self):
-            return self.getToken(ExprParser.KEYL, 0)
+            return self.getToken(FunxParser.KEYL, 0)
         def block(self):
-            return self.getTypedRuleContext(ExprParser.BlockContext,0)
+            return self.getTypedRuleContext(FunxParser.BlockContext,0)
 
         def KEYR(self):
-            return self.getToken(ExprParser.KEYR, 0)
+            return self.getToken(FunxParser.KEYR, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitWhile" ):
@@ -675,22 +675,22 @@ class ExprParser ( Parser ):
 
     class IfstContext(StatementContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.StatementContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IF(self):
-            return self.getToken(ExprParser.IF, 0)
+            return self.getToken(FunxParser.IF, 0)
         def condition(self):
-            return self.getTypedRuleContext(ExprParser.ConditionContext,0)
+            return self.getTypedRuleContext(FunxParser.ConditionContext,0)
 
         def KEYL(self):
-            return self.getToken(ExprParser.KEYL, 0)
+            return self.getToken(FunxParser.KEYL, 0)
         def block(self):
-            return self.getTypedRuleContext(ExprParser.BlockContext,0)
+            return self.getTypedRuleContext(FunxParser.BlockContext,0)
 
         def KEYR(self):
-            return self.getToken(ExprParser.KEYR, 0)
+            return self.getToken(FunxParser.KEYR, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfst" ):
@@ -702,72 +702,72 @@ class ExprParser ( Parser ):
 
     def statement(self):
 
-        localctx = ExprParser.StatementContext(self, self._ctx, self.state)
+        localctx = FunxParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_statement)
         try:
             self.state = 83
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
-                localctx = ExprParser.WriteContext(self, localctx)
+                localctx = FunxParser.WriteContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 59
-                self.match(ExprParser.WRITE)
+                self.match(FunxParser.WRITE)
                 self.state = 60
                 self.expr(0)
                 pass
 
             elif la_ == 2:
-                localctx = ExprParser.IfstContext(self, localctx)
+                localctx = FunxParser.IfstContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 61
-                self.match(ExprParser.IF)
+                self.match(FunxParser.IF)
                 self.state = 62
                 self.condition()
                 self.state = 63
-                self.match(ExprParser.KEYL)
+                self.match(FunxParser.KEYL)
                 self.state = 64
                 self.block()
                 self.state = 65
-                self.match(ExprParser.KEYR)
+                self.match(FunxParser.KEYR)
                 pass
 
             elif la_ == 3:
-                localctx = ExprParser.IfelsestContext(self, localctx)
+                localctx = FunxParser.IfelsestContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 67
-                self.match(ExprParser.IF)
+                self.match(FunxParser.IF)
                 self.state = 68
                 self.condition()
                 self.state = 69
-                self.match(ExprParser.KEYL)
+                self.match(FunxParser.KEYL)
                 self.state = 70
                 self.block()
                 self.state = 71
-                self.match(ExprParser.KEYR)
+                self.match(FunxParser.KEYR)
                 self.state = 72
-                self.match(ExprParser.ELSE)
+                self.match(FunxParser.ELSE)
                 self.state = 73
-                self.match(ExprParser.KEYL)
+                self.match(FunxParser.KEYL)
                 self.state = 74
                 self.block()
                 self.state = 75
-                self.match(ExprParser.KEYR)
+                self.match(FunxParser.KEYR)
                 pass
 
             elif la_ == 4:
-                localctx = ExprParser.WhileContext(self, localctx)
+                localctx = FunxParser.WhileContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 77
-                self.match(ExprParser.WHILE)
+                self.match(FunxParser.WHILE)
                 self.state = 78
                 self.condition()
                 self.state = 79
-                self.match(ExprParser.KEYL)
+                self.match(FunxParser.KEYL)
                 self.state = 80
                 self.block()
                 self.state = 81
-                self.match(ExprParser.KEYR)
+                self.match(FunxParser.KEYR)
                 pass
 
 
@@ -789,7 +789,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_expr
+            return FunxParser.RULE_expr
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -798,18 +798,18 @@ class ExprParser ( Parser ):
 
     class DivContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def DIV(self):
-            return self.getToken(ExprParser.DIV, 0)
+            return self.getToken(FunxParser.DIV, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDiv" ):
@@ -820,18 +820,18 @@ class ExprParser ( Parser ):
 
     class SubContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def SUB(self):
-            return self.getToken(ExprParser.SUB, 0)
+            return self.getToken(FunxParser.SUB, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSub" ):
@@ -842,18 +842,18 @@ class ExprParser ( Parser ):
 
     class ModContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def MOD(self):
-            return self.getToken(ExprParser.MOD, 0)
+            return self.getToken(FunxParser.MOD, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMod" ):
@@ -864,18 +864,18 @@ class ExprParser ( Parser ):
 
     class MultContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def MULT(self):
-            return self.getToken(ExprParser.MULT, 0)
+            return self.getToken(FunxParser.MULT, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMult" ):
@@ -886,12 +886,12 @@ class ExprParser ( Parser ):
 
     class VarContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDVAR(self):
-            return self.getToken(ExprParser.IDVAR, 0)
+            return self.getToken(FunxParser.IDVAR, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVar" ):
@@ -902,12 +902,12 @@ class ExprParser ( Parser ):
 
     class ValueContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def NUM(self):
-            return self.getToken(ExprParser.NUM, 0)
+            return self.getToken(FunxParser.NUM, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitValue" ):
@@ -918,18 +918,18 @@ class ExprParser ( Parser ):
 
     class SumContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def SUM(self):
-            return self.getToken(ExprParser.SUM, 0)
+            return self.getToken(FunxParser.SUM, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSum" ):
@@ -940,17 +940,17 @@ class ExprParser ( Parser ):
 
     class ParentExpContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def LP(self):
-            return self.getToken(ExprParser.LP, 0)
+            return self.getToken(FunxParser.LP, 0)
         def expr(self):
-            return self.getTypedRuleContext(ExprParser.ExprContext,0)
+            return self.getTypedRuleContext(FunxParser.ExprContext,0)
 
         def RP(self):
-            return self.getToken(ExprParser.RP, 0)
+            return self.getToken(FunxParser.RP, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParentExp" ):
@@ -961,18 +961,18 @@ class ExprParser ( Parser ):
 
     class ExpContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def EXP(self):
-            return self.getToken(ExprParser.EXP, 0)
+            return self.getToken(FunxParser.EXP, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExp" ):
@@ -983,12 +983,12 @@ class ExprParser ( Parser ):
 
     class VarFuncContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDFUNC(self):
-            return self.getToken(ExprParser.IDFUNC, 0)
+            return self.getToken(FunxParser.IDFUNC, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVarFunc" ):
@@ -1001,7 +1001,7 @@ class ExprParser ( Parser ):
     def expr(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = ExprParser.ExprContext(self, self._ctx, _parentState)
+        localctx = FunxParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 16
         self.enterRecursionRule(localctx, 16, self.RULE_expr, _p)
@@ -1011,37 +1011,37 @@ class ExprParser ( Parser ):
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [20]:
-                localctx = ExprParser.ParentExpContext(self, localctx)
+                localctx = FunxParser.ParentExpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
                 self.state = 86
-                self.match(ExprParser.LP)
+                self.match(FunxParser.LP)
                 self.state = 87
                 self.expr(0)
                 self.state = 88
-                self.match(ExprParser.RP)
+                self.match(FunxParser.RP)
                 pass
             elif token in [1]:
-                localctx = ExprParser.ValueContext(self, localctx)
+                localctx = FunxParser.ValueContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 90
-                self.match(ExprParser.NUM)
+                self.match(FunxParser.NUM)
                 pass
             elif token in [23]:
-                localctx = ExprParser.VarContext(self, localctx)
+                localctx = FunxParser.VarContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 91
-                self.match(ExprParser.IDVAR)
+                self.match(FunxParser.IDVAR)
                 pass
             elif token in [24]:
-                localctx = ExprParser.VarFuncContext(self, localctx)
+                localctx = FunxParser.VarFuncContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 92
-                self.match(ExprParser.IDFUNC)
+                self.match(FunxParser.IDFUNC)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1059,79 +1059,79 @@ class ExprParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
-                        localctx = ExprParser.ExpContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.ExpContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 95
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 96
-                        self.match(ExprParser.EXP)
+                        self.match(FunxParser.EXP)
                         self.state = 97
                         self.expr(9)
                         pass
 
                     elif la_ == 2:
-                        localctx = ExprParser.MultContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.MultContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 98
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 99
-                        self.match(ExprParser.MULT)
+                        self.match(FunxParser.MULT)
                         self.state = 100
                         self.expr(9)
                         pass
 
                     elif la_ == 3:
-                        localctx = ExprParser.DivContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.DivContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 101
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 102
-                        self.match(ExprParser.DIV)
+                        self.match(FunxParser.DIV)
                         self.state = 103
                         self.expr(8)
                         pass
 
                     elif la_ == 4:
-                        localctx = ExprParser.ModContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.ModContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 104
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 105
-                        self.match(ExprParser.MOD)
+                        self.match(FunxParser.MOD)
                         self.state = 106
                         self.expr(7)
                         pass
 
                     elif la_ == 5:
-                        localctx = ExprParser.SumContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.SumContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 107
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 108
-                        self.match(ExprParser.SUM)
+                        self.match(FunxParser.SUM)
                         self.state = 109
                         self.expr(6)
                         pass
 
                     elif la_ == 6:
-                        localctx = ExprParser.SubContext(self, ExprParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = FunxParser.SubContext(self, FunxParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 110
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 111
-                        self.match(ExprParser.SUB)
+                        self.match(FunxParser.SUB)
                         self.state = 112
                         self.expr(5)
                         pass
@@ -1159,7 +1159,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_assign
+            return FunxParser.RULE_assign
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -1169,16 +1169,16 @@ class ExprParser ( Parser ):
 
     class AssiContext(AssignContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.AssignContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.AssignContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def IDVAR(self):
-            return self.getToken(ExprParser.IDVAR, 0)
+            return self.getToken(FunxParser.IDVAR, 0)
         def ASSIGN(self):
-            return self.getToken(ExprParser.ASSIGN, 0)
+            return self.getToken(FunxParser.ASSIGN, 0)
         def expr(self):
-            return self.getTypedRuleContext(ExprParser.ExprContext,0)
+            return self.getTypedRuleContext(FunxParser.ExprContext,0)
 
 
         def accept(self, visitor:ParseTreeVisitor):
@@ -1191,15 +1191,15 @@ class ExprParser ( Parser ):
 
     def assign(self):
 
-        localctx = ExprParser.AssignContext(self, self._ctx, self.state)
+        localctx = FunxParser.AssignContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_assign)
         try:
-            localctx = ExprParser.AssiContext(self, localctx)
+            localctx = FunxParser.AssiContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 118
-            self.match(ExprParser.IDVAR)
+            self.match(FunxParser.IDVAR)
             self.state = 119
-            self.match(ExprParser.ASSIGN)
+            self.match(FunxParser.ASSIGN)
             self.state = 120
             self.expr(0)
         except RecognitionException as re:
@@ -1220,7 +1220,7 @@ class ExprParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_condition
+            return FunxParser.RULE_condition
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -1230,18 +1230,18 @@ class ExprParser ( Parser ):
 
     class LtContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def LT(self):
-            return self.getToken(ExprParser.LT, 0)
+            return self.getToken(FunxParser.LT, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLt" ):
@@ -1252,18 +1252,18 @@ class ExprParser ( Parser ):
 
     class LeContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def LE(self):
-            return self.getToken(ExprParser.LE, 0)
+            return self.getToken(FunxParser.LE, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLe" ):
@@ -1274,18 +1274,18 @@ class ExprParser ( Parser ):
 
     class NeqContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def NEQ(self):
-            return self.getToken(ExprParser.NEQ, 0)
+            return self.getToken(FunxParser.NEQ, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNeq" ):
@@ -1296,18 +1296,18 @@ class ExprParser ( Parser ):
 
     class EqContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def EQ(self):
-            return self.getToken(ExprParser.EQ, 0)
+            return self.getToken(FunxParser.EQ, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEq" ):
@@ -1318,18 +1318,18 @@ class ExprParser ( Parser ):
 
     class GtContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def GT(self):
-            return self.getToken(ExprParser.GT, 0)
+            return self.getToken(FunxParser.GT, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGt" ):
@@ -1340,18 +1340,18 @@ class ExprParser ( Parser ):
 
     class GeContext(ConditionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ExprParser.ConditionContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a FunxParser.ConditionContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(FunxParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(FunxParser.ExprContext,i)
 
         def GE(self):
-            return self.getToken(ExprParser.GE, 0)
+            return self.getToken(FunxParser.GE, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGe" ):
@@ -1363,74 +1363,74 @@ class ExprParser ( Parser ):
 
     def condition(self):
 
-        localctx = ExprParser.ConditionContext(self, self._ctx, self.state)
+        localctx = FunxParser.ConditionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_condition)
         try:
             self.state = 146
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
-                localctx = ExprParser.LtContext(self, localctx)
+                localctx = FunxParser.LtContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 122
                 self.expr(0)
                 self.state = 123
-                self.match(ExprParser.LT)
+                self.match(FunxParser.LT)
                 self.state = 124
                 self.expr(0)
                 pass
 
             elif la_ == 2:
-                localctx = ExprParser.GtContext(self, localctx)
+                localctx = FunxParser.GtContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 126
                 self.expr(0)
                 self.state = 127
-                self.match(ExprParser.GT)
+                self.match(FunxParser.GT)
                 self.state = 128
                 self.expr(0)
                 pass
 
             elif la_ == 3:
-                localctx = ExprParser.GeContext(self, localctx)
+                localctx = FunxParser.GeContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 130
                 self.expr(0)
                 self.state = 131
-                self.match(ExprParser.GE)
+                self.match(FunxParser.GE)
                 self.state = 132
                 self.expr(0)
                 pass
 
             elif la_ == 4:
-                localctx = ExprParser.LeContext(self, localctx)
+                localctx = FunxParser.LeContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 134
                 self.expr(0)
                 self.state = 135
-                self.match(ExprParser.LE)
+                self.match(FunxParser.LE)
                 self.state = 136
                 self.expr(0)
                 pass
 
             elif la_ == 5:
-                localctx = ExprParser.EqContext(self, localctx)
+                localctx = FunxParser.EqContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 138
                 self.expr(0)
                 self.state = 139
-                self.match(ExprParser.EQ)
+                self.match(FunxParser.EQ)
                 self.state = 140
                 self.expr(0)
                 pass
 
             elif la_ == 6:
-                localctx = ExprParser.NeqContext(self, localctx)
+                localctx = FunxParser.NeqContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 142
                 self.expr(0)
                 self.state = 143
-                self.match(ExprParser.NEQ)
+                self.match(FunxParser.NEQ)
                 self.state = 144
                 self.expr(0)
                 pass
