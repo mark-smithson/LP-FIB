@@ -2,8 +2,8 @@ if __name__ is not None and "." in __name__:
     from .FunxParser import FunxParser
     from .FunxVisitor import FunxVisitor
 else:
-    from .FunxParser import FunxParser
-    from .FunxVisitor import FunxVisitor
+    from FunxParser import FunxParser
+    from FunxVisitor import FunxVisitor
 
 
 class TreeVisitor(FunxVisitor):
