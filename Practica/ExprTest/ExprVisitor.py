@@ -24,6 +24,26 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#CreateFunc.
+    def visitCreateFunc(self, ctx:ExprParser.CreateFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#InvFunc.
+    def visitInvFunc(self, ctx:ExprParser.InvFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#ParamsCreateFunc.
+    def visitParamsCreateFunc(self, ctx:ExprParser.ParamsCreateFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#ParamsInvFunc.
+    def visitParamsInvFunc(self, ctx:ExprParser.ParamsInvFuncContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExprParser#Write.
     def visitWrite(self, ctx:ExprParser.WriteContext):
         return self.visitChildren(ctx)
@@ -76,6 +96,11 @@ class ExprVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExprParser#Sum.
     def visitSum(self, ctx:ExprParser.SumContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#ParentExp.
+    def visitParentExp(self, ctx:ExprParser.ParentExpContext):
         return self.visitChildren(ctx)
 
 

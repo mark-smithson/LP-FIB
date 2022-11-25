@@ -6,7 +6,16 @@ block: instr* ;
 
 instr : assign
     | statement
+    | createFunction
+    | invokeFunction
+    | expr
     ;
+
+createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
+invokeFunction : IDFUNC paramsInvokeFunction # InvFunc;
+
+paramsCreateFunction : IDVAR* # ParamsCreateFunc;
+paramsInvokeFunction : expr* # ParamsInvFunc;
 
 statement : WRITE expr # Write
     | IF condition KEYL block KEYR # Ifst
@@ -14,7 +23,8 @@ statement : WRITE expr # Write
     | WHILE condition KEYL block KEYR # While
     ;
 
-expr : <assoc=right> expr EXP expr # Exp
+expr : LP expr RP # ParentExp
+    |<assoc=right> expr EXP expr # Exp
     | expr MULT expr # Mult
     | expr DIV expr # Div
     | expr MOD expr # Mod
@@ -52,6 +62,9 @@ WHILE: 'while' ;
 ELSE : 'else' ;
 KEYL : '{' ;
 KEYR : '}' ;
+LP : '(' ;
+RP : ')' ;
 WRITE : 'write' ;
-IDVAR : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')* ;
+IDVAR : [a-z][a-zA-Z0-9]* ;
+IDFUNC : [A-Z][a-zA-Z0-9]* ;
 WS : [ \n]+ -> skip ;

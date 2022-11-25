@@ -8,7 +8,8 @@ else:
 
 class EvalVisitor(ExprVisitor):
 
-    symtable = {}
+    symtable = [{}]
+    functable = {}
 
     def visitRoot(self, ctx):
         l = list(ctx.getChildren())
@@ -22,6 +23,52 @@ class EvalVisitor(ExprVisitor):
         l = list(ctx.getChildren())
         while (self.visit(l[1])):
             self.visit(l[3])
+    def visitCreateFunc(self, ctx):
+        l = list(ctx.getChildren())
+        procName = l[0].getText()
+
+        if procName in self.functable:
+            raise Exception(procName + " it already exists")
+
+        params = self.visit(l[1])
+        self.functable[procName] = [l[3], params]
+
+    # Visit a parse tree produced by ExprParser#InvFunc.
+    def visitInvFunc(self, ctx):
+        l = list(ctx.getChildren())
+        func = l[0].getText()
+        if func not in self.functable:
+            raise Exception(func + " does not exists")
+
+        selfparams = self.visit(l[1])
+        proc = self.functable[func]
+        code = proc[0]
+        params = proc[1]
+        self.symtable.append({})
+
+        if len(selfparams) != len(params):
+            raise Exception(func + " does not have the same amount of parametres")
+
+        for i in range(0, len(params)):
+            self.symtable[-1][params[i]] = selfparams[i]
+
+        res = self.visit(code)
+        self.symtable.pop()
+
+        return res
+
+    def visitParamsCreateFunc(self, ctx):
+        l = list(ctx.getChildren())
+        params = [param.getText() for param in l]
+
+        return params
+
+    def visitParamsInvFunc(self, ctx):
+        l = list(ctx.getChildren())
+        params = [self.visit(param) for param in l]
+
+        return params
+
 
     def visitIfst(self, ctx):
         l = list(ctx.getChildren())
@@ -63,7 +110,7 @@ class EvalVisitor(ExprVisitor):
 
     def visitVar(self, ctx):
         l = list(ctx.getChildren())
-        return self.symtable[l[0].getText()]
+        return self.symtable[-1][l[0].getText()]
 
     # Visit a parse tree produced by ExprParser#Value.
     def visitValue(self, ctx):
@@ -75,6 +122,10 @@ class EvalVisitor(ExprVisitor):
         l = list(ctx.getChildren())
         return self.visit(l[0]) + self.visit(l[2])
 
+    def visitParentExp(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[1])
+
     # Visit a parse tree produced by ExprParser#Exp.
     def visitExp(self, ctx):
         l = list(ctx.getChildren())
@@ -82,7 +133,7 @@ class EvalVisitor(ExprVisitor):
 
     def visitAssi(self, ctx):
         l = list(ctx.getChildren())
-        self.symtable[l[0].getText()] = self.visit(l[2])
+        self.symtable[-1][l[0].getText()] = self.visit(l[2])
 
     def visitLt(self, ctx):
         l = list(ctx.getChildren())
