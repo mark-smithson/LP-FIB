@@ -7,7 +7,6 @@ block: instr* ;
 instr : assign
     | statement
     | createFunction
-    | invokeFunction
     | expr
     ;
 
@@ -30,6 +29,7 @@ expr : LP expr RP # ParentExp
     | expr MOD expr # Mod
     | expr SUM expr # Sum
     | expr SUB expr # Sub
+    | invokeFunction # InvokFunc
     | NUM # Value
     | IDVAR # Var
     | IDFUNC # VarFunc

@@ -74,6 +74,11 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by FunxParser#InvokFunc.
+    def visitInvokFunc(self, ctx:FunxParser.InvokFuncContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by FunxParser#Mod.
     def visitMod(self, ctx:FunxParser.ModContext):
         return self.visitChildren(ctx)

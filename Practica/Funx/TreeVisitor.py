@@ -33,6 +33,11 @@ class TreeVisitor(FunxVisitor):
         params = self.visit(l[1])
         self.functable[procName] = [l[3], params]
 
+    # Visit a parse tree produced by FunxParser#InvokFunc.
+    def visitInvokFunc(self, ctx):
+        l = list(ctx.getChildren())
+        return self.visit(l[0])
+
     # Visit a parse tree produced by ExprParser#InvFunc.
     def visitInvFunc(self, ctx):
         l = list(ctx.getChildren())
