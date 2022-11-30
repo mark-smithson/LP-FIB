@@ -7,22 +7,33 @@ else:
 
 
 class TreeVisitor(FunxVisitor):
-
     symtable = [{}]
     functable = {}
-
+    # {'x': 2}
     def visitRoot(self, ctx):
         l = list(ctx.getChildren())
         print(self.visit(l[0]))
 
+    def visitBlock(self, ctx):
+        l = list(ctx.getChildren())
+        if len(l) > 0:
+            res_i = self.visit(l[0])
+            if res_i is None:
+                return self.visit(l[1])
+            else:
+                return res_i
+
     def visitWrite(self, ctx):
         l = list(ctx.getChildren())
         print(self.visit(l[1]))
+        return None
 
     def visitWhile(self, ctx):
         l = list(ctx.getChildren())
-        while (self.visit(l[1])):
+        while self.visit(l[1]):
             self.visit(l[3])
+        return None
+
     def visitCreateFunc(self, ctx):
         l = list(ctx.getChildren())
         procName = l[0].getText()
@@ -74,11 +85,11 @@ class TreeVisitor(FunxVisitor):
 
         return params
 
-
     def visitIfst(self, ctx):
         l = list(ctx.getChildren())
         if self.visit(l[1]):
             return self.visit(l[3])
+        return None
 
     def visitIfelsest(self, ctx):
         l = list(ctx.getChildren())
@@ -89,11 +100,10 @@ class TreeVisitor(FunxVisitor):
 
     def visitDiv(self, ctx):
         l = list(ctx.getChildren())
-
         if l[2] == 0:
             raise Exception("Math error: Attempted to divide by Zero")
         else:
-            return self.visit(l[0])/self.visit(l[2])
+            return self.visit(l[0]) / self.visit(l[2])
 
     def visitMod(self, ctx):
         l = list(ctx.getChildren())
@@ -101,7 +111,7 @@ class TreeVisitor(FunxVisitor):
         if l[2] == 0:
             raise Exception("Math error: Attempted to divide by Zero")
         else:
-            return self.visit(l[0])%self.visit(l[2])
+            return self.visit(l[0]) % self.visit(l[2])
 
     # Visit a parse tree produced by ExprParser#Sub.
     def visitSub(self, ctx):
@@ -111,7 +121,7 @@ class TreeVisitor(FunxVisitor):
     # Visit a parse tree produced by ExprParser#Mult.
     def visitMult(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0])*self.visit(l[2])
+        return self.visit(l[0]) * self.visit(l[2])
 
     def visitVar(self, ctx):
         l = list(ctx.getChildren())
@@ -134,16 +144,16 @@ class TreeVisitor(FunxVisitor):
     # Visit a parse tree produced by ExprParser#Exp.
     def visitExp(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0])**self.visit(l[2])
+        return self.visit(l[0]) ** self.visit(l[2])
 
     def visitVarFunc(self, ctx):
         l = list(ctx.getChildren())
-        # print(self.functable[l[0].getText()][0].getText())
         return int(self.functable[l[0].getText()][0].getText())
 
     def visitAssi(self, ctx):
         l = list(ctx.getChildren())
         self.symtable[-1][l[0].getText()] = self.visit(l[2])
+        return None
 
     def visitLt(self, ctx):
         l = list(ctx.getChildren())

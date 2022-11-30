@@ -2,7 +2,9 @@ grammar Funx;
 
 root : block EOF ;
 
-block: instr* ;
+block: instr block
+    |
+    ;
 
 instr : assign
     | statement

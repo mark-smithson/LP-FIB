@@ -3,7 +3,7 @@ from FunxLexer import FunxLexer
 from FunxParser import FunxParser
 from TreeVisitor import TreeVisitor
 
-print("GO!: ")
+print("Welcome to Funx!: ")
 
 input_stream = StdinStream()
 lexer = FunxLexer(input_stream)
