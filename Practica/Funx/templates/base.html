@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <style>
+        h1 {
+            font-style: oblique;
+        }
+
+        th {
+            text-align: left;
+            font-style: oblique;
+            font-size: 20px;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-child {
+            flex: 1;
+            background-color: #BEBEBE;
+        }
+
+        .flex-child:first-child {
+            margin-right: 20px;
+        }
+
+    </style>
+
     <meta charset="UTF-8">
     <title>Funx</title>
-    <h1>Hello world!</h1>
+    <h1>Funx interpreter</h1>
 </head>
-<body>
 
+<body>
+    <div class="flex-container">
+
+      <div class="flex-child">
+        <table style="width:75%">
+            <tr>
+                <th>
+                    <h2>Funcions: </h2>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <h2>Consola: </h2>
+                    <div><textarea rows="30" cols="100"></textarea></div>
+                    <div><input type="submit" value="Submit"></div>
+                </th>
+            </tr>
+        </table>
+      </div>
+
+      <div class="flex-child">
+            <table style="width:75%">
+                <tr>
+                    <th>
+                        <h2>Resultats: </h2>
+                    </th>
+                </tr>
+            </table>
+      </div>
+
+    </div>
 </body>
 </html>
