@@ -12,7 +12,10 @@ class TreeVisitor(FunxVisitor):
     # {'x': 2}
     def visitRoot(self, ctx):
         l = list(ctx.getChildren())
-        print(self.visit(l[0]))
+        val = self.visit(l[0])
+        print(val)
+        return val
+
 
     def visitBlock(self, ctx):
         l = list(ctx.getChildren())

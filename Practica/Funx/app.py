@@ -7,10 +7,13 @@ from TreeVisitor import TreeVisitor
 
 app = Flask(__name__)
 
+funcnames = []
+
 code = {}
 
 input = []
 output = []
+
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
@@ -22,14 +25,16 @@ def home():
         value = value.replace('\n', '')
 
         pos_func = ""
+        funcname = ""
 
         i = 0
         c = value[i]
+
+        # Function declaration or invoke
         if "A" <= c <= "Z":
             okProc = True
             blankSpace = False
-            while c != "{" and type(c) == type("") and i < len(value) - 1 and okProc:
-
+            while c != "{" and i < len(value) - 1 and okProc:
                 if c == " ":
                     blankSpace = True
 
@@ -40,27 +45,30 @@ def home():
                 i = i + 1
                 c = value[i]
 
+            print("HOLA")
             if pos_func != "" and not pos_func in code and okProc:
-                code[pos_func] = value[i:]
+                j = 0
+
+                while pos_func[j] != " " and j < len(pos_func):
+                    funcname += pos_func[j]
+                    j += 1
+
+                if funcname not in funcnames:
+                    code[pos_func] = value[i:]
+                    funcnames.append(funcname)
 
         if len(input) < 5:
             input.append(value)
 
         else:
             for i in range(0, 4):
-                input[i+1] = input[i]
-            input[0] = value
-
-        if len(output) < 5:
-            input.append(value)
-
-        else:
-            for i in range(0, 4):
-                input[i + 1] = input[i]
-            input[0] = value
+                input[i] = input[i + 1]
+            input[len(input) - 1] = value
 
         print(code)
-
+        print(funcnames)
+        print("INP/OUT")
+        print(input)
         lexer = FunxLexer(InputStream(value))
 
         token_stream = CommonTokenStream(lexer)
@@ -69,7 +77,17 @@ def home():
         tree = parser.root()
 
         eval = TreeVisitor()
-        eval.visitRoot(tree)
+        valO = eval.visitRoot(tree)
+
+        if len(output) < 5:
+            output.append(valO)
+
+        else:
+            for i in range(0, 4):
+                output[i] = output[i + 1]
+            output[len(output) - 1] = valO
+        print(output)
+
 
     return render_template("base.html")
 
