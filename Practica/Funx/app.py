@@ -14,10 +14,19 @@ code = {}
 input = []
 output = []
 
+inputC = 0
+outputC = 0
+
+inpL = []
+outL = []
+
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
     global code
+    global inputC
+    global outputC
+
     result = request.form
 
     for key, value in result.items():
@@ -45,7 +54,6 @@ def home():
                 i = i + 1
                 c = value[i]
 
-            print("HOLA")
             if pos_func != "" and not pos_func in code and okProc:
                 j = 0
 
@@ -57,18 +65,23 @@ def home():
                     code[pos_func] = value[i:]
                     funcnames.append(funcname)
 
+        inputC += 1
+        outputC += 1
+
         if len(input) < 5:
             input.append(value)
-
+            inpL.append(inputC)
         else:
             for i in range(0, 4):
                 input[i] = input[i + 1]
+                inpL[i] = inpL[i + 1]
             input[len(input) - 1] = value
+            inpL[len(inpL) - 1] = inputC
 
         print(code)
         print(funcnames)
         print("INP/OUT")
-        print(input)
+        print(inpL)
         lexer = FunxLexer(InputStream(value))
 
         token_stream = CommonTokenStream(lexer)
@@ -81,15 +94,17 @@ def home():
 
         if len(output) < 5:
             output.append(valO)
-
+            outL.append(outputC)
         else:
             for i in range(0, 4):
                 output[i] = output[i + 1]
+                outL[i] = outL[i+1]
             output[len(output) - 1] = valO
-        print(output)
+            outL[len(outL) - 1] = outputC
 
+        print(outL)
 
-    return render_template("base.html")
+    return render_template("base.html", funcname=code, InpOut=zip(input, output, inpL, outL))
 
 
 if __name__ == "__main__":

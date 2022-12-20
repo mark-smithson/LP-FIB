@@ -26,6 +26,9 @@
             margin-right: 20px;
         }
 
+        nav ul {height: 75px; width: 18%;}
+        nav ul {overflow: hidden; overflow-y: scroll}
+
     </style>
 
     <meta charset="UTF-8">
@@ -41,6 +44,13 @@
             <tr>
                 <th>
                     <h2>Funcions: </h2>
+                    <nav>
+                        <ul>
+                       {%for i in funcname %}
+                            <li>{{ i }}</li>
+                        {%endfor%}
+                        </ul>
+                    </nav>
                 </th>
             </tr>
             <tr>
@@ -60,6 +70,11 @@
                 <tr>
                     <th>
                         <h2>Resultats: </h2>
+                        {%for i, j, ci, cj in InpOut %}
+                            <div>In {{ci}}: {{ i }}</div>
+                            <div>Out {{cj}}: {{ j }}</div>
+                            <br>
+                        {%endfor%}
                     </th>
                 </tr>
             </table>
