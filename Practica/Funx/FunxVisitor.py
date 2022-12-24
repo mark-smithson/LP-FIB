@@ -64,11 +64,6 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by FunxParser#Div.
-    def visitDiv(self, ctx:FunxParser.DivContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by FunxParser#Sub.
     def visitSub(self, ctx:FunxParser.SubContext):
         return self.visitChildren(ctx)
@@ -84,18 +79,8 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by FunxParser#Mult.
-    def visitMult(self, ctx:FunxParser.MultContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by FunxParser#Var.
     def visitVar(self, ctx:FunxParser.VarContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by FunxParser#Value.
-    def visitValue(self, ctx:FunxParser.ValueContext):
         return self.visitChildren(ctx)
 
 
@@ -109,13 +94,33 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by FunxParser#Exp.
-    def visitExp(self, ctx:FunxParser.ExpContext):
+    # Visit a parse tree produced by FunxParser#AccArr.
+    def visitAccArr(self, ctx:FunxParser.AccArrContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by FunxParser#VarFunc.
     def visitVarFunc(self, ctx:FunxParser.VarFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#Div.
+    def visitDiv(self, ctx:FunxParser.DivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#Mult.
+    def visitMult(self, ctx:FunxParser.MultContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#Value.
+    def visitValue(self, ctx:FunxParser.ValueContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#Exp.
+    def visitExp(self, ctx:FunxParser.ExpContext):
         return self.visitChildren(ctx)
 
 
@@ -136,11 +141,6 @@ class FunxVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by FunxParser#AppendArr.
     def visitAppendArr(self, ctx:FunxParser.AppendArrContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by FunxParser#AccArr.
-    def visitAccArr(self, ctx:FunxParser.AccArrContext):
         return self.visitChildren(ctx)
 
 

@@ -12,7 +12,6 @@ instr : assign
     | expr
     | createArray
     | appendToArray
-    | accesArr
     ;
 
 createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
@@ -36,6 +35,7 @@ expr : LP expr RP # ParentExp
     | expr SUB expr # Sub
     | invokeFunction # InvokFunc
     | LEN LP IDVAR RP #LenArr
+    | IDVAR LC expr RC #AccArr
     | NUM # Value
     | IDVAR # Var
     | IDFUNC # VarFunc
@@ -44,7 +44,6 @@ expr : LP expr RP # ParentExp
 createArray: IDVAR LISTC LC arrayParams RC #CreateArr;
 arrayParams: expr* #ParamsArr;
 appendToArray: IDVAR LISTADD expr #AppendArr;
-accesArr: IDVAR LC expr RC #AccArr;
 
 assign : IDVAR ASSIGN expr # Assi ;
 condition : expr LT expr # Lt
