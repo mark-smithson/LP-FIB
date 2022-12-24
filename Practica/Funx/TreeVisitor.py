@@ -76,6 +76,63 @@ class TreeVisitor(FunxVisitor):
 
         return res
 
+    # Visit a parse tree produced by FunxParser#CreateArr.
+    def visitCreateArr(self, ctx):
+        l = list(ctx.getChildren())
+        els = self.visit(l[3])
+        self.symtable[-1][l[0].getText()] = els
+
+
+    # Visit a parse tree produced by FunxParser#ParamsArr.
+    def visitParamsArr(self, ctx):
+        l = list(ctx.getChildren())
+        els = []
+        for child in l:
+            elem = self.visit(child)
+            if elem is None:
+                raise Exception(elem + " is not a valid element")
+            else:
+                els.append(elem)
+
+        return els
+
+
+    # Visit a parse tree produced by FunxParser#AppendArr.
+    def visitAppendArr(self, ctx):
+        l = list(ctx.getChildren())
+        id = l[0].getText()
+        if id not in self.symtable[-1]:
+            raise Exception(id + " does not exist")
+
+        elem = self.visit(l[2])
+        self.symtable[-1][id].append(elem)
+
+
+    # Visit a parse tree produced by FunxParser#LenArr.
+    def visitLenArr(self, ctx):
+        l = list(ctx.getChildren())
+        id = l[2].getText()
+        if id not in self.symtable[-1]:
+            raise Exception(id + " does not exist")
+
+        l = self.symtable[-1][id]
+        if isinstance(l, list):
+            return len(l)
+        else:
+            raise Exception(id + " is not a list")
+
+    def visitAccArr(self, ctx):
+        l = list(ctx.getChildren())
+        id = l[0].getText()
+        if id not in self.symtable[-1]:
+            raise Exception(id + " does not exist")
+        i = self.visit(l[2])
+
+        if len(self.symtable[-1][id]) <= i:
+            raise Exception("Indexerror: list index out of range")
+
+        return self.symtable[-1][id][i]
+
     def visitParamsCreateFunc(self, ctx):
         l = list(ctx.getChildren())
         params = [param.getText() for param in l]

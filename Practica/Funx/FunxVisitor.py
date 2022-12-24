@@ -119,6 +119,31 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by FunxParser#LenArr.
+    def visitLenArr(self, ctx:FunxParser.LenArrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#CreateArr.
+    def visitCreateArr(self, ctx:FunxParser.CreateArrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#ParamsArr.
+    def visitParamsArr(self, ctx:FunxParser.ParamsArrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#AppendArr.
+    def visitAppendArr(self, ctx:FunxParser.AppendArrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by FunxParser#AccArr.
+    def visitAccArr(self, ctx:FunxParser.AccArrContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by FunxParser#Assi.
     def visitAssi(self, ctx:FunxParser.AssiContext):
         return self.visitChildren(ctx)

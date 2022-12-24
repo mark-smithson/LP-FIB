@@ -10,6 +10,9 @@ instr : assign
     | statement
     | createFunction
     | expr
+    | createArray
+    | appendToArray
+    | accesArr
     ;
 
 createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
@@ -32,10 +35,16 @@ expr : LP expr RP # ParentExp
     | expr SUM expr # Sum
     | expr SUB expr # Sub
     | invokeFunction # InvokFunc
+    | LEN LP IDVAR RP #LenArr
     | NUM # Value
     | IDVAR # Var
     | IDFUNC # VarFunc
     ;
+
+createArray: IDVAR LISTC LC arrayParams RC #CreateArr;
+arrayParams: expr* #ParamsArr;
+appendToArray: IDVAR LISTADD expr #AppendArr;
+accesArr: IDVAR LC expr RC #AccArr;
 
 assign : IDVAR ASSIGN expr # Assi ;
 condition : expr LT expr # Lt
@@ -67,6 +76,12 @@ KEYL : '{' ;
 KEYR : '}' ;
 LP : '(' ;
 RP : ')' ;
+LC : '[' ;
+RC : ']' ;
+COMMA: ',' ;
+LISTC : '|=' ;
+LISTADD : '<<' ;
+LEN : 'len' ;
 WRITE : 'write' ;
 IDVAR : [a-z][a-zA-Z0-9]* ;
 IDFUNC : [A-Z][a-zA-Z0-9]* ;
