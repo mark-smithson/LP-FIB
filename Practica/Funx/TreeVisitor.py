@@ -37,6 +37,17 @@ class TreeVisitor(FunxVisitor):
             self.visit(l[3])
         return None
 
+    def visitFor(self, ctx):
+        l = list(ctx.getChildren())
+        self.visit(l[1])
+
+        while self.visit(l[3]):
+            self.visit(l[7])
+            self.visit(l[5])
+
+        return None
+
+
     def visitCreateFunc(self, ctx):
         l = list(ctx.getChildren())
         procName = l[0].getText()
@@ -229,29 +240,30 @@ class TreeVisitor(FunxVisitor):
 
     def visitLt(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) < self.visit(l[2])
+        return 1 if self.visit(l[0]) < self.visit(l[2]) else 0
+
 
     # Visit a parse tree produced by ExprParser#Gt.
     def visitGt(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) > self.visit(l[2])
+        return 1 if self.visit(l[0]) > self.visit(l[2]) else 0
 
     # Visit a parse tree produced by ExprParser#Ge.
     def visitGe(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) >= self.visit(l[2])
+        return 1 if self.visit(l[0]) >= self.visit(l[2]) else 0
 
     # Visit a parse tree produced by ExprParser#Le.
     def visitLe(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) <= self.visit(l[2])
+        return 1 if self.visit(l[0]) <= self.visit(l[2]) else 0
 
     # Visit a parse tree produced by ExprParser#Eq.
     def visitEq(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) == self.visit(l[2])
+        return 1 if self.visit(l[0]) == self.visit(l[2]) else 0
 
     # Visit a parse tree produced by ExprParser#Neq.
     def visitNeq(self, ctx):
         l = list(ctx.getChildren())
-        return self.visit(l[0]) != self.visit(l[2])
+        return 1 if self.visit(l[0]) != self.visit(l[2]) else 0

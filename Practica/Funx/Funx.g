@@ -13,6 +13,7 @@ instr : assign
     | createArray
     | appendToArray
     | popArray
+    | condition
     ;
 
 createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
@@ -25,6 +26,7 @@ statement : WRITE expr # Write
     | IF condition KEYL block KEYR # Ifst
     | IF condition KEYL block KEYR ELSE KEYL block KEYR # Ifelsest
     | WHILE condition KEYL block KEYR # While
+    | FOR assign COMMA condition COMMA assign KEYL block KEYR # For
     ;
 
 expr : LP expr RP # ParentExp
@@ -72,6 +74,7 @@ GE: '>=' ;
 LE: '<=' ;
 IF: 'if' ;
 WHILE: 'while' ;
+FOR: 'for' ;
 ELSE : 'else' ;
 KEYL : '{' ;
 KEYR : '}' ;
@@ -87,3 +90,4 @@ WRITE : 'write' ;
 IDVAR : [a-z][a-zA-Z0-9]* ;
 IDFUNC : [A-Z][a-zA-Z0-9]* ;
 WS : [ \n]+ -> skip ;
+COMMENT : '#' ~[\r\n]* -> skip ;
