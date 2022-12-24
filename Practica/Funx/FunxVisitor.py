@@ -144,6 +144,11 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by FunxParser#PopArr.
+    def visitPopArr(self, ctx:FunxParser.PopArrContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by FunxParser#Assi.
     def visitAssi(self, ctx:FunxParser.AssiContext):
         return self.visitChildren(ctx)

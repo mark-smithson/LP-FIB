@@ -12,6 +12,7 @@ instr : assign
     | expr
     | createArray
     | appendToArray
+    | popArray
     ;
 
 createFunction : IDFUNC paramsCreateFunction KEYL block KEYR # CreateFunc;
@@ -43,7 +44,8 @@ expr : LP expr RP # ParentExp
 
 createArray: IDVAR LISTC LC arrayParams RC #CreateArr;
 arrayParams: expr* #ParamsArr;
-appendToArray: IDVAR LISTADD expr #AppendArr;
+appendToArray: IDVAR LISTARR expr #AppendArr;
+popArray: LISTARR IDVAR #PopArr;
 
 assign : IDVAR ASSIGN expr # Assi ;
 condition : expr LT expr # Lt
@@ -79,7 +81,7 @@ LC : '[' ;
 RC : ']' ;
 COMMA: ',' ;
 LISTC : '|=' ;
-LISTADD : '<<' ;
+LISTARR : '<<' ;
 LEN : 'len' ;
 WRITE : 'write' ;
 IDVAR : [a-z][a-zA-Z0-9]* ;

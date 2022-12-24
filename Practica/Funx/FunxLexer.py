@@ -99,7 +99,7 @@ class FunxLexer(Lexer):
     RC = 23
     COMMA = 24
     LISTC = 25
-    LISTADD = 26
+    LISTARR = 26
     LEN = 27
     WRITE = 28
     IDVAR = 29
@@ -119,13 +119,13 @@ class FunxLexer(Lexer):
     symbolicNames = [ "<INVALID>",
             "NUM", "SUM", "SUB", "MULT", "DIV", "MOD", "EXP", "ASSIGN", 
             "EQ", "NEQ", "LT", "GT", "GE", "LE", "IF", "WHILE", "ELSE", 
-            "KEYL", "KEYR", "LP", "RP", "LC", "RC", "COMMA", "LISTC", "LISTADD", 
+            "KEYL", "KEYR", "LP", "RP", "LC", "RC", "COMMA", "LISTC", "LISTARR", 
             "LEN", "WRITE", "IDVAR", "IDFUNC", "WS" ]
 
     ruleNames = [ "NUM", "SUM", "SUB", "MULT", "DIV", "MOD", "EXP", "ASSIGN", 
                   "EQ", "NEQ", "LT", "GT", "GE", "LE", "IF", "WHILE", "ELSE", 
                   "KEYL", "KEYR", "LP", "RP", "LC", "RC", "COMMA", "LISTC", 
-                  "LISTADD", "LEN", "WRITE", "IDVAR", "IDFUNC", "WS" ]
+                  "LISTARR", "LEN", "WRITE", "IDVAR", "IDFUNC", "WS" ]
 
     grammarFileName = "Funx.g"
 

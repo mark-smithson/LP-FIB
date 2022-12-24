@@ -90,7 +90,7 @@ class TreeVisitor(FunxVisitor):
         for child in l:
             elem = self.visit(child)
             if elem is None:
-                raise Exception(elem + " is not a valid element")
+                raise Exception("Wrong params in array creation")
             else:
                 els.append(elem)
 
@@ -106,6 +106,18 @@ class TreeVisitor(FunxVisitor):
 
         elem = self.visit(l[2])
         self.symtable[-1][id].append(elem)
+
+    def visitPopArr(self, ctx):
+        l = list(ctx.getChildren())
+        id = l[1].getText()
+
+        if id not in self.symtable[-1]:
+            raise Exception(id + " does not exist")
+        if len(self.symtable[-1][id]) == 0:
+            raise Exception("Array is empty")
+
+        self.symtable[-1][id].pop(len(self.symtable[-1][id]) - 1)
+
 
 
     # Visit a parse tree produced by FunxParser#LenArr.
