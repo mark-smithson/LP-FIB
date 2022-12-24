@@ -43,6 +43,7 @@ def home():
         if "A" <= c <= "Z":
             okProc = True
             blankSpace = False
+            nonK = True
             while c != "{" and i < len(value) - 1 and okProc:
                 if c == " ":
                     blankSpace = True
@@ -54,10 +55,11 @@ def home():
                 i = i + 1
                 c = value[i]
 
-            if pos_func != "" and not pos_func in code and okProc:
+            nonK = (c == '{')
+            if pos_func != "" and not pos_func in code and okProc and nonK:
                 j = 0
 
-                while pos_func[j] != " " and j < len(pos_func):
+                while j < len(pos_func) and pos_func[j] != " ":
                     funcname += pos_func[j]
                     j += 1
 
@@ -102,9 +104,8 @@ def home():
             output[len(output) - 1] = valO
             outL[len(outL) - 1] = outputC
 
-        print(outL)
 
-    return render_template("base.html", funcname=code, InpOut=zip(input, output, inpL, outL))
+    return render_template("base.html", funcname=code, InpOut=zip(input, output, inpL))
 
 
 if __name__ == "__main__":

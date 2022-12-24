@@ -9,7 +9,7 @@ else:
 class TreeVisitor(FunxVisitor):
     symtable = [{}]
     functable = {}
-    # {'x': 2}
+
     def visitRoot(self, ctx):
         l = list(ctx.getChildren())
         val = self.visit(l[0])
@@ -29,7 +29,7 @@ class TreeVisitor(FunxVisitor):
     def visitWrite(self, ctx):
         l = list(ctx.getChildren())
         print(self.visit(l[1]))
-        return None
+        return self.visit(l[1])
 
     def visitWhile(self, ctx):
         l = list(ctx.getChildren())
