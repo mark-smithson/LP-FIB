@@ -25,6 +25,7 @@ class TreeVisitor(FunxVisitor):
                 return self.visit(l[1])
             else:
                 return res_i
+        return None
 
     def visitWrite(self, ctx):
         l = list(ctx.getChildren())
@@ -34,7 +35,9 @@ class TreeVisitor(FunxVisitor):
     def visitWhile(self, ctx):
         l = list(ctx.getChildren())
         while self.visit(l[1]):
-            self.visit(l[3])
+            res = self.visit(l[3])
+            if res != None:
+                return res
         return None
 
     def visitFor(self, ctx):
@@ -42,7 +45,9 @@ class TreeVisitor(FunxVisitor):
         self.visit(l[1])
 
         while self.visit(l[3]):
-            self.visit(l[7])
+            res = self.visit(l[7])
+            if res != None:
+                return res
             self.visit(l[5])
 
         return None
@@ -152,7 +157,7 @@ class TreeVisitor(FunxVisitor):
         i = self.visit(l[2])
 
         if len(self.symtable[-1][id]) <= i:
-            raise Exception("Indexerror: list index out of range")
+            raise Exception("Indexerror: " + self.symtable[-1][id] + "is out of range of list index")
 
         return self.symtable[-1][id][i]
 
@@ -186,7 +191,7 @@ class TreeVisitor(FunxVisitor):
         if l[2] == 0:
             raise Exception("Math error: Attempted to divide by Zero")
         else:
-            return self.visit(l[0]) / self.visit(l[2])
+            return self.visit(l[0]) // self.visit(l[2])
 
     def visitMod(self, ctx):
         l = list(ctx.getChildren())

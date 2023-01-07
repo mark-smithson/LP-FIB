@@ -80,10 +80,10 @@ def home():
             input[len(input) - 1] = value
             inpL[len(inpL) - 1] = inputC
 
-        print(code)
-        print(funcnames)
-        print("INP/OUT")
-        print(inpL)
+        #print(code)
+        #print(funcnames)
+        #print("INP/OUT")
+        #print(inpL)
         lexer = FunxLexer(InputStream(value))
 
         token_stream = CommonTokenStream(lexer)
@@ -93,7 +93,7 @@ def home():
 
         eval = TreeVisitor()
         valO = eval.visitRoot(tree)
-
+        #print(eval)
         if len(output) < 5:
             output.append(valO)
             outL.append(outputC)
