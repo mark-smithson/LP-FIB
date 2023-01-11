@@ -114,6 +114,11 @@ class FunxVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by FunxParser#Neg.
+    def visitNeg(self, ctx:FunxParser.NegContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by FunxParser#Mult.
     def visitMult(self, ctx:FunxParser.MultContext):
         return self.visitChildren(ctx)

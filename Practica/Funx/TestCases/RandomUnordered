@@ -1,3 +1,4 @@
+# Hi!
 BinarySearch l e d x {
     if e > d { 1-2 }
     else {
@@ -9,6 +10,11 @@ BinarySearch l e d x {
        }
    }
 }
+
+l |= [1 2 3 4 5]
+
+BinarySearch l 0 len(l)-1 2
+BinarySearch l 0 len(l)-1 12
 
 ForLinearSearch l x {
    for i <- 0, i < len(l)-1, i <- i + 1 {

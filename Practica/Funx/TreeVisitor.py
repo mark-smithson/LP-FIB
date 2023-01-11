@@ -225,6 +225,10 @@ class TreeVisitor(FunxVisitor):
         l = list(ctx.getChildren())
         return self.visit(l[0]) + self.visit(l[2])
 
+    def visitNeg(self, ctx):
+        l = list(ctx.getChildren())
+        return (-1)*self.visit(l[1])
+
     def visitParentExp(self, ctx):
         l = list(ctx.getChildren())
         return self.visit(l[1])

@@ -29,9 +29,19 @@ def home():
 
     result = request.form
 
-    for key, value in result.items():
-        value = value.replace('\r', '')
-        value = value.replace('\n', '')
+    for key, valueAll in result.items():
+        i = 0
+
+        # Comment of a function
+        if valueAll[i] == '#':
+            while valueAll[i] != '\n':
+                i += 1
+            i -= 1
+
+        valueAll = valueAll.replace('\r', '')
+        valueAll = valueAll.replace('\n', '')
+
+        value = valueAll[i:]
 
         pos_func = ""
         funcname = ""
@@ -71,13 +81,13 @@ def home():
         outputC += 1
 
         if len(input) < 5:
-            input.append(value)
+            input.append(valueAll)
             inpL.append(inputC)
         else:
             for i in range(0, 4):
                 input[i] = input[i + 1]
                 inpL[i] = inpL[i + 1]
-            input[len(input) - 1] = value
+            input[len(input) - 1] = valueAll
             inpL[len(inpL) - 1] = inputC
 
         #print(code)

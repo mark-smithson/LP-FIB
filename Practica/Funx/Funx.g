@@ -36,6 +36,7 @@ expr : LP expr RP # ParentExp
     | expr MOD expr # Mod
     | expr SUM expr # Sum
     | expr SUB expr # Sub
+    | SUB expr # Neg
     | invokeFunction # InvokFunc
     | LEN LP IDVAR RP #LenArr
     | IDVAR LC expr RC #AccArr
@@ -90,4 +91,4 @@ WRITE : 'write' ;
 IDVAR : [a-z][a-zA-Z0-9]* ;
 IDFUNC : [A-Z][a-zA-Z0-9]* ;
 WS : [ \n]+ -> skip ;
-COMMENT : '#' ~[\r\n]* -> skip ;
+COMMENT : '#' ~[\n]* -> skip ;
