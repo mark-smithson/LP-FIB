@@ -22,8 +22,7 @@ invokeFunction : IDFUNC paramsInvokeFunction # InvFunc;
 paramsCreateFunction : IDVAR* # ParamsCreateFunc;
 paramsInvokeFunction : expr* # ParamsInvFunc;
 
-statement : WRITE expr # Write
-    | IF condition KEYL block KEYR # Ifst
+statement : IF condition KEYL block KEYR # Ifst
     | IF condition KEYL block KEYR ELSE KEYL block KEYR # Ifelsest
     | WHILE condition KEYL block KEYR # While
     | FOR assign COMMA condition COMMA assign KEYL block KEYR # For
@@ -87,7 +86,6 @@ COMMA: ',' ;
 LISTC : '|=' ;
 LISTARR : '<<' ;
 LEN : 'len' ;
-WRITE : 'write' ;
 IDVAR : [a-z][a-zA-Z0-9]* ;
 IDFUNC : [A-Z][a-zA-Z0-9]* ;
 WS : [ \n]+ -> skip ;

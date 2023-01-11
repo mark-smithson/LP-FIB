@@ -33,11 +33,6 @@ class TreeVisitor(funxVisitor):
                 return res_i
         return None
 
-    def visitWrite(self, ctx):
-        l = list(ctx.getChildren())
-        print(self.visit(l[1]))
-        return self.visit(l[1])
-
     def visitWhile(self, ctx):
         l = list(ctx.getChildren())
         while self.visit(l[1]):
