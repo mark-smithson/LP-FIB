@@ -6,3 +6,4 @@ clean:
 	rm -f funxVisitor.py
 	rm -f *.interp
 	rm -f *.tokens
+	rm -rf __pycache__
