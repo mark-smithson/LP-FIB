@@ -58,7 +58,7 @@ class TreeVisitor(FunxVisitor):
         procName = l[0].getText()
 
         if procName in self.functable:
-            raise Exception(procName + " it already exists")
+            raise Exception("Exception: " + procName + " it already exists")
 
         params = self.visit(l[1])
         self.functable[procName] = [l[3], params]
@@ -73,7 +73,7 @@ class TreeVisitor(FunxVisitor):
         l = list(ctx.getChildren())
         func = l[0].getText()
         if func not in self.functable:
-            raise Exception(func + " does not exists")
+            raise Exception("Exception: " + func + " does not exists")
 
         selfparams = self.visit(l[1])
         proc = self.functable[func]
@@ -82,7 +82,7 @@ class TreeVisitor(FunxVisitor):
         self.symtable.append({})
 
         if len(selfparams) != len(params):
-            raise Exception(func + " does not have the same amount of parametres")
+            raise Exception("Exception: " + func + " does not have the same amount of parameters")
 
         for i in range(0, len(params)):
             self.symtable[-1][params[i]] = selfparams[i]
@@ -106,7 +106,7 @@ class TreeVisitor(FunxVisitor):
         for child in l:
             elem = self.visit(child)
             if elem is None:
-                raise Exception("Wrong params in array creation")
+                raise Exception("Exception: Wrong parameters in list creation")
             else:
                 els.append(elem)
 
@@ -118,7 +118,7 @@ class TreeVisitor(FunxVisitor):
         l = list(ctx.getChildren())
         id = l[0].getText()
         if id not in self.symtable[-1]:
-            raise Exception(id + " does not exist")
+            raise Exception("Exception: " + id + " does not exist")
 
         elem = self.visit(l[2])
         self.symtable[-1][id].append(elem)
@@ -128,9 +128,9 @@ class TreeVisitor(FunxVisitor):
         id = l[1].getText()
 
         if id not in self.symtable[-1]:
-            raise Exception(id + " does not exist")
+            raise Exception("Exception: " + id + " does not exist")
         if len(self.symtable[-1][id]) == 0:
-            raise Exception("Array is empty")
+            raise Exception("Exception: list is empty")
 
         self.symtable[-1][id].pop(len(self.symtable[-1][id]) - 1)
 
@@ -140,24 +140,25 @@ class TreeVisitor(FunxVisitor):
     def visitLenArr(self, ctx):
         l = list(ctx.getChildren())
         id = l[2].getText()
+
         if id not in self.symtable[-1]:
-            raise Exception(id + " does not exist")
+            raise Exception("Exception: " + id + " does not exist")
 
         l = self.symtable[-1][id]
         if isinstance(l, list):
             return len(l)
         else:
-            raise Exception(id + " is not a list")
+            raise Exception("Exception: " + id + " is not a list")
 
     def visitAccArr(self, ctx):
         l = list(ctx.getChildren())
         id = l[0].getText()
         if id not in self.symtable[-1]:
-            raise Exception(id + " does not exist")
+            raise Exception("Exception: " + id + " does not exist")
         i = self.visit(l[2])
 
         if len(self.symtable[-1][id]) <= i:
-            raise Exception("Indexerror: " + self.symtable[-1][id] + "is out of range of list index")
+            raise Exception("Exception: " + self.symtable[-1][id] + "is out of range of list index")
 
         return self.symtable[-1][id][i]
 
@@ -189,7 +190,7 @@ class TreeVisitor(FunxVisitor):
     def visitDiv(self, ctx):
         l = list(ctx.getChildren())
         if l[2] == 0:
-            raise Exception("Math error: Attempted to divide by Zero")
+            raise Exception("Exception: Attempted to divide by Zero")
         else:
             return self.visit(l[0]) // self.visit(l[2])
 
@@ -197,7 +198,7 @@ class TreeVisitor(FunxVisitor):
         l = list(ctx.getChildren())
 
         if l[2] == 0:
-            raise Exception("Math error: Attempted to divide by Zero")
+            raise Exception("Exceptionr: Attempted to divide by Zero")
         else:
             return self.visit(l[0]) % self.visit(l[2])
 

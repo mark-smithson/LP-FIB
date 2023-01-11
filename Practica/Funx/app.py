@@ -32,7 +32,7 @@ def home():
     for key, valueAll in result.items():
         i = 0
 
-        # Comment of a function
+        # Comment
         if valueAll[i] == '#':
             while valueAll[i] != '\n':
                 i += 1
@@ -90,10 +90,6 @@ def home():
             input[len(input) - 1] = valueAll
             inpL[len(inpL) - 1] = inputC
 
-        #print(code)
-        #print(funcnames)
-        #print("INP/OUT")
-        #print(inpL)
         lexer = FunxLexer(InputStream(value))
 
         token_stream = CommonTokenStream(lexer)
@@ -102,8 +98,13 @@ def home():
         tree = parser.root()
 
         eval = TreeVisitor()
-        valO = eval.visitRoot(tree)
-        #print(eval)
+
+        valO = None
+        try:
+            valO = eval.visitRoot(tree)
+        except Exception as e:
+            valO = e
+
         if len(output) < 5:
             output.append(valO)
             outL.append(outputC)
