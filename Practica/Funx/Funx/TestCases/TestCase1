@@ -1,0 +1,28 @@
+1r submit:
+
+
+
+# Binary Search function, if element exists return index, if not return -1.
+BinarySearch l e d x {
+    if e > d { -1 }
+    else {
+       mid <- (e+d)/2
+       if l[mid] = x { mid }
+       else {
+           if l[mid] > x { (BinarySearch l e mid-1 x) }
+           else { (BinarySearch l mid+1 d x) }
+       }
+   }
+}
+
+2n submit:
+
+l |= [1 2 3 4 5]
+
+3r submit:
+
+BinarySearch l 0 len(l)-1 2
+
+4rt submit:
+
+BinarySearch l 0 len(l)-1 12

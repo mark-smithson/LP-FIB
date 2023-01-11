@@ -1,0 +1,19 @@
+1r submit
+
+# Function that computes de sum of list l
+SumList l {
+   res <- 0
+   for i <- 0, i < len(l), i <- i + 1 {
+       res <- res + l[i]
+   }
+
+   res
+}
+
+2n submit:
+
+l |= [1 2 3 4 5]
+
+3r submit:
+
+SumList l

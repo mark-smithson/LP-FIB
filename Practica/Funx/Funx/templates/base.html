@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        h1 {
+            font-style: oblique;
+        }
+
+        th {
+            text-align: left;
+            font-style: oblique;
+            font-size: 20px;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-child {
+            flex: 1;
+            background-color: #BEBEBE;
+        }
+
+        .flex-child:first-child {
+            margin-right: 20px;
+        }
+
+        nav ul {height: 150px; width: 35%;}
+        nav ul {overflow: hidden; overflow-y: scroll}
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Funx</title>
+    <h1>Funx interpreter</h1>
+</head>
+
+<body>
+    <div class="flex-container">
+
+      <div class="flex-child">
+        <table style="width:75%">
+            <tr>
+                <th>
+                    <h2>Funcions: </h2>
+                    <nav>
+                        <ul>
+                       {%for i in funcname %}
+                            <li>{{ i }}</li>
+                        {%endfor%}
+                        </ul>
+                    </nav>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <h2>Consola: </h2>
+                    <form action = "http://localhost:5000" method = "POST">
+                       <p><textarea name = "input" rows = "30" cols = "100"></textarea></p>
+                       <p><input type = "submit" value = "Submit" /></p>
+                    </form>
+                </th>
+            </tr>
+        </table>
+      </div>
+
+      <div class="flex-child">
+            <table style="width:75%">
+                <tr>
+                    <th>
+                        <h2>Resultats: </h2>
+                        {%for i, j, ci in InpOut %}
+                            <div>In {{ci}}: {{ i }}</div>
+                            <div>Out {{ci}}: {{ j }}</div>
+                            <br>
+                        {%endfor%}
+                    </th>
+                </tr>
+            </table>
+      </div>
+
+    </div>
+</body>
+</html>

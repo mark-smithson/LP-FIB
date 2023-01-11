@@ -1,0 +1,22 @@
+1r submit:
+
+# Chech if element x exists in list l, if not return -1, if it exists return 1.
+ForLinearSearch l x {
+   for i <- 0, i < len(l)-1, i <- i + 1 {
+       if l[i] = x { 1 }
+   }
+
+   -1
+}
+
+2n submit:
+
+l |= [1 2 3 4 5]
+
+3r submit:
+
+ForLinearSearch l 3
+
+4rt submit:
+
+ForLinearSearch l 138
