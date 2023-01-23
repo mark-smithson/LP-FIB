@@ -118,4 +118,8 @@ Ens imprimiria 5.
 * Accedim a l'índex d'una llista que no existeix.
 * L'índex de la llista no té un rang correcte.
 * Divisió entre 0.
+
 # Jocs de proba
+* **BinarySearch.funx:** Una funció de cerca dicotòmica de tota la vida.
+* **ExistsInList.funx:** Cerca lineal per veure si un element existeix o no en una llista.
+* **ListSum.funx:** Calcula la suma d'una llista.
